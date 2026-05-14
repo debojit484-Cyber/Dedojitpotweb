@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debojit Sanyal | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:rgba(0,255,255,0.08);
+      border-radius:50%;
+      top:-200px;
+      left:-100px;
+      filter:blur(120px);
+      z-index:-1;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:400px;
+      height:400px;
+      background:rgba(140,0,255,0.1);
+      border-radius:50%;
+      bottom:-150px;
+      right:-100px;
+      filter:blur(120px);
+      z-index:-1;
+    }
+
+    header{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      backdrop-filter:blur(12px);
+      background:rgba(255,255,255,0.04);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:1.7rem;
+      font-weight:700;
+      color:#00f7ff;
+      letter-spacing:1px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:white;
+      margin-left:25px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:#00f7ff;
+    }
+
+    section{
+      padding:110px 8% 80px;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:40px;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+      min-width:300px;
+    }
+
+    .hero-text h3{
+      font-size:1.2rem;
+      color:#00f7ff;
+      margin-bottom:10px;
+    }
+
+    .hero-text h1{
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      color:#d0d0d0;
+      line-height:1.8;
+      max-width:650px;
+      margin-bottom:30px;
+    }
+
+    .btns{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border-radius:40px;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.2);
+    }
+
+    .primary{
+      background:linear-gradient(135deg,#00f7ff,#7d2cff);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 20px rgba(0,255,255,0.2);
+    }
+
+    .hero-card{
+      width:350px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:30px;
+      padding:30px;
+      backdrop-filter:blur(15px);
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-15px);
+      }
+    }
+
+    .hero-card h2{
+      margin-bottom:20px;
+      color:#00f7ff;
+    }
+
+    .hero-card ul{
+      list-style:none;
+    }
+
+    .hero-card ul li{
+      margin:14px 0;
+      color:#ddd;
+    }
+
+    .title{
+      font-size:2.4rem;
+      margin-bottom:50px;
+      text-align:center;
+    }
+
+    .title span{
+      color:#00f7ff;
+    }
+
+    .about-box,
+    .contact-box{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:25px;
+      padding:40px;
+      line-height:1.9;
+      color:#ddd;
+      backdrop-filter:blur(12px);
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:30px;
+      border-radius:25px;
+      transition:0.3s;
+      backdrop-filter:blur(10px);
+    }
+
+    .skill-card:hover{
+      transform:translateY(-10px);
+      border-color:#00f7ff;
+      box-shadow:0 10px 30px rgba(0,255,255,0.15);
+    }
+
+    .skill-card h3{
+      margin-bottom:15px;
+      color:#00f7ff;
+    }
+
+    .project-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:rgba(255,255,255,0.05);
+      border-radius:25px;
+      padding:30px;
+      border:1px solid rgba(255,255,255,0.1);
+      transition:0.3s;
+    }
+
+    .project-card:hover{
+      transform:scale(1.03);
+    }
+
+    .project-card h3{
+      margin-bottom:15px;
+      color:#00f7ff;
+    }
+
+    footer{
+      padding:30px;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:#aaa;
+    }
+
+    .typing{
+      color:#00f7ff;
+      border-right:2px solid #00f7ff;
+      white-space:nowrap;
+      overflow:hidden;
+      display:inline-block;
+      animation:blink 0.7s infinite;
+    }
+
+    @keyframes blink{
+      50%{
+        border-color:transparent;
+      }
+    }
+
+    @media(max-width:900px){
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+
+      .btns{
+        justify-content:center;
+      }
+
+      nav{
+        display:none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">D.S</div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h3>Hello, I'm</h3>
+    <h1>Debojit Sanyal</h1>
+
+    <h2>
+      <span class="typing"></span>
+    </h2>
+
+    <p>
+      I am Debojit from Cooch Behar and currently pursuing B.A Honours from Surya Mahavidyalaya. I am a content creator and content writer with basic computer skills and knowledge of HTML, CSS, JavaScript, Excel, Canva, AI photo editing, and website development. I love learning new skills, exploring AI technologies, and creating modern web experiences.
+    </p>
+
+    <div class="btns">
+      <a href="#contact" class="btn primary">Contact Me</a>
+      <a href="mailto:debojitsanyal484@gmail.com" class="btn">Email Me</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <h2>Quick Details</h2>
+
+    <ul>
+      <li>🎓 B.A Honours Student</li>
+      <li>✍️ Content Writer</li>
+      <li>🎥 Content Creator</li>
+      <li>💻 Frontend Learner</li>
+      <li>🤖 AI & Canva Editor</li>
+      <li>📍 Cooch Behar, India</li>
+    </ul>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="title">About <span>Me</span></h2>
+
+  <div class="about-box">
+    I enjoy building modern and responsive websites using HTML, CSS, and JavaScript. Along with web development, I also create digital content and work with AI tools for photo editing and creativity. My goal is to improve my technical skills, work on exciting projects, and build a strong career in the digital and creative industry.
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="title">My <span>Skills</span></h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <h3>HTML</h3>
+      <p>Creating responsive and structured websites using semantic HTML.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>CSS</h3>
+      <p>Designing modern interfaces with animations, layouts, and responsive design.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>JavaScript</h3>
+      <p>Adding interactivity and functionality to websites and web apps.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Content Writing</h3>
+      <p>Writing creative and engaging content for digital platforms.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>AI & Canva Editing</h3>
+      <p>Using AI tools and Canva for creative editing and design work.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3>Excel & Computer Skills</h3>
+      <p>Basic computer operations, spreadsheets, and productivity tools.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="title">My <span>Projects</span></h2>
+
+  <div class="project-grid">
+
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>A futuristic personal portfolio website designed using HTML, CSS, and JavaScript.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Content Creation</h3>
+      <p>Creative content and social media designs using AI tools and Canva.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Web Development Practice</h3>
+      <p>Responsive web design projects and frontend practice websites.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="title">Contact <span>Me</span></h2>
+
+  <div class="contact-box">
+    <p><strong>Name:</strong> Debojit Sanyal</p>
+    <p><strong>Email:</strong> debojitsanyal484@gmail.com</p>
+    <p><strong>Location:</strong> Cooch Behar, West Bengal, India</p>
+    <p><strong>Status:</strong> Open for Learning & Creative Opportunities</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Debojit Sanyal • Built with HTML, CSS & JavaScript
+</footer>
+
+<script>
+  const text = [
+    "Content Creator",
+    "Content Writer",
+    "Frontend Learner",
+    "AI Enthusiast"
+  ];
+
+  let count = 0;
+  let index = 0;
+  let currentText = '';
+  let letter = '';
+
+  (function type(){
+
+    if(count === text.length){
+      count = 0;
+    }
+
+    currentText = text[count];
+    letter = currentText.slice(0, ++index);
+
+    document.querySelector('.typing').textContent = letter;
+
+    if(letter.length === currentText.length){
+      count++;
+      index = 0;
+      setTimeout(type, 1200);
+    }
+    else{
+      setTimeout(type, 120);
+    }
+
+  })();
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# How to Push This Project to GitHub
+
+## Step 1 — Create a Folder
+
+Create a folder on your computer:
+
+`debojit-portfolio`
+
+Inside the folder add:
+
+`index.html`
+
+Paste the full code into the file.
+
+---
+
+## Step 2 — Create GitHub Repository
+
+1. Open GitHub.
+2. Click “New Repository”.
+3. Repository name:
+
+`debojit-portfolio`
+
+4. Click “Create Repository”.
+
+---
+
+# Step 3 — Upload Files Using Git
+
+Open terminal inside the folder and run:
+
+```bash
+git init
+git add .
+git commit -m "First portfolio commit"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/debojit-portfolio.git
+git push -u origin main
+```
+
+Replace:
+
+`YOUR_USERNAME`
+
+with your GitHub username.
+
+---
+
+# Step 4 — Deploy on Vercel
+
+1. Open Vercel.
+2. Login using GitHub.
+3. Click “Add New Project”.
+4. Import `debojit-portfolio`.
+5. Click “Deploy”.
+
+Your portfolio website will go live in a few seconds.
+
+---
+
+# Suggested Project Title for College
+
+**“Personal Portfolio Website using HTML, CSS and JavaScript”**
+
+---
+
+# Suggested Features Mention for Viva / Project Explanation
+
+* Responsive design
+* Modern futuristic UI
+* Single page application
+* Animated typing effect
+* Smooth scrolling navigation
+* Glassmorphism design
+* Mobile friendly layout
+* Contact section
+* Skills showcase
+* Project showcase
